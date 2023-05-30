@@ -18,7 +18,7 @@ const sizes = {
 	height: window.innerHeight
 }
 
-// Textures
+// Textures - Borg Cube
 const spaceTexture = new THREE.TextureLoader().load('/assets/images/blue-space.webp');
 scene.background = spaceTexture;
 
