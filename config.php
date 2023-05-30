@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'production' => false,
-    'baseUrl' => 'borg-cube.test',
+    'production' => true,
+    'baseUrl' => 'https://camjam-01.github.io/borg-cube/',
     'title' => 'Borg Cube',
     'description' => 'Resistance is futile.',
     'collections' => [],
