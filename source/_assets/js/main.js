@@ -1,32 +1,68 @@
 import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 
-
-// Create a scene
+// Scene
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+const borgTexture = new THREE.TextureLoader().load('/assets/images/borg-cube-texture.png');
+const cube = new THREE.BoxGeometry( 5, 5, 5 ); 
+const cubeMat = new THREE.MeshBasicMaterial({
+	map: borgTexture,
+}); 
+const mesh2 = new THREE.Mesh( cube, cubeMat ); 
+scene.add( mesh2 );
 
-
-// Create the cube
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
-
-camera.position.z = 5;
-
-
-// Animate the cube
-function animate() {
-	requestAnimationFrame( animate );
-
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.01;
-
-	renderer.render( scene, camera );
+// Sizes
+const sizes = {
+	width: window.innerWidth,
+	height: window.innerHeight
 }
 
-animate();
+// Textures
+const spaceTexture = new THREE.TextureLoader().load('/assets/images/blue-space.webp');
+scene.background = spaceTexture;
+
+// Lights
+const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+pointLight.position.set(0, 10, 10);
+pointLight.intensity = .5;
+scene.add(pointLight);
+
+// Camera
+const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100);
+camera.position.z = 20;
+scene.add(camera);
+
+// Renderer
+const canvas = document.querySelector(".webgl");
+const renderer = new THREE.WebGLRenderer({ canvas });
+renderer.setSize(sizes.width, sizes.height);
+renderer.setPixelRatio(2);
+renderer.render(scene, camera);
+
+// Controls
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.enablePan = false;
+// controls.autoRotate = true;
+controls.autoRotateSpeed = 5;
+
+// Resize
+window.addEventListener("resize", () => {
+	// Update Sizes
+	sizes.width = window.innerWidth;
+	sizes.height = window.innerHeight;
+
+	// Update Camera
+	camera.aspect = sizes.width / sizes.height;
+	camera.updateProjectionMatrix();
+	renderer.setSize(sizes.width, sizes.height);
+})
+
+const loop = () => {
+	controls.update();
+	renderer.render(scene, camera);
+	window.requestAnimationFrame(loop);
+}
+
+loop();

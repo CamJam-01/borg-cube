@@ -2,8 +2,8 @@
 
 return [
     'production' => false,
-    'baseUrl' => 'playing-cards.test',
-    'title' => 'Playing Cards',
-    'description' => 'Website description.',
+    'baseUrl' => 'borg-cube.test',
+    'title' => 'Borg Cube',
+    'description' => 'Resistance is futile.',
     'collections' => [],
 ];
