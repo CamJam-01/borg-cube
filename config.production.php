@@ -2,5 +2,5 @@
 
 return [
     'production' => true,
-    'baseUrl' => 'https://camjam-01.github.io/borg-cube/',
+    'baseUrl' => 'https://camjam-01.github.io/',
 ];
