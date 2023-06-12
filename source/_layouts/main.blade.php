@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="canonical" href="{{ $page->getUrl() }}">
-        <link rel="icon" type="image/x-icon" href="/assets/images/jigsaw.png">
+        <link rel="icon" type="image/x-icon" href="borg-cube/assets/images/jigsaw.png">
         <meta name="description" content="{{ $page->description }}">
         <title>{{ $page->title }}</title>
         <link rel="stylesheet" href="https://camjam-01.github.io/borg-cube{{ mix('css/main.css', 'assets/build') }}">
