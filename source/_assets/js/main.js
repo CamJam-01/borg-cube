@@ -4,7 +4,7 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 // Scene
 const scene = new THREE.Scene();
 
-const borgTexture = new THREE.TextureLoader().load('https://camjam-01.github.io/borg-cube/assets/images/borg-cube-texture.png');
+const borgTexture = new THREE.TextureLoader().load('/assets/images/borg-cube-texture.png');
 const cube = new THREE.BoxGeometry( 5, 5, 5 ); 
 const cubeMat = new THREE.MeshBasicMaterial({
 	map: borgTexture,
@@ -19,7 +19,7 @@ const sizes = {
 }
 
 // Textures - Borg Cube
-const spaceTexture = new THREE.TextureLoader().load('https://camjam-01.github.io/borg-cube/assets/images/blue-space.webp');
+const spaceTexture = new THREE.TextureLoader().load('/assets/images/blue-space.webp');
 scene.background = spaceTexture;
 
 // Lights
